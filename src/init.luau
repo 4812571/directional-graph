@@ -50,10 +50,18 @@ function DiGraph:GetNodes(): {[Node]: {Edge}}
 end
 
 function DiGraph:GetEdges(node: Node): {Edge}
+    if not self._edges[node] then
+        return {}
+    end
+
     return self._edges[node]
 end
 
 function DiGraph:GetEdge(node1: Node, node2: Node): Edge?
+    if not self._edges[node1] then
+        return nil
+    end
+
     return self._edges[node1][node2]
 end
 
